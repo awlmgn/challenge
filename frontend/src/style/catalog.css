@@ -1,0 +1,493 @@
+.gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.6)
+    );
+    z-index: 2;
+    animation: gradientAnim 5s ease-in-out infinite;
+  }
+  .challenge-hub {
+    min-height: 100vh; /* Устанавливаем минимальную высоту */
+    display: flex;
+    flex-direction: column;
+  }
+  /* Анимация фона */
+  @keyframes gradientAnim {
+    0% {
+      background: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+      );
+    }
+    50% {
+      background: linear-gradient(
+        to bottom left,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.8)
+      );
+    }
+    100% {
+      background: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+      );
+    }
+  }
+  
+  /* Основной контент */
+  .content-area {
+    position: absolute;
+    top: 15%;
+    left: 6%;
+    z-index: 3;
+    max-width: 40%;
+    padding: 24px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    color: white;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    overflow-y: auto;
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  /* Появление контента */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-switch.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Кнопка участия */
+  .join-button {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 26px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 255, 128, 0.2);
+    position: relative;
+  }
+  
+  .join-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 255, 128, 0.4);
+  }
+  
+  /* Картинки галереи */
+  .gallery-card {
+    min-width: 160px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    scroll-snap-align: start;
+    position: relative;
+  }
+  
+  .gallery-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 255, 128, 0.4);
+  }
+  
+  .gallery-card-img {
+    flex: 1;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  
+  .gallery-card:hover .gallery-card-img {
+    filter: brightness(1);
+    transform: scale(1.05);
+  }
+  
+  .gallery-card-title {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    color: white;
+    font-size: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gallery-card:hover .gallery-card-title {
+    opacity: 1;
+  }
+  
+  .challenge-gallery {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    z-index: 4;
+    overflow-x: auto;
+    max-width: 90%;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+  }
+  
+  /* Прокрутка */
+  .challenge-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .challenge-gallery::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+  }
+  
+  .challenge-gallery::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  /* Изолируем стили каталога с помощью префикса .catalog */
+  .catalog .gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.6)
+    );
+    z-index: 2;
+    animation: catalog-gradientAnim 5s ease-in-out infinite;
+  }
+  
+  /* Анимация фона */
+  @keyframes catalog-gradientAnim {
+    0% {
+      background: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+      );
+    }
+    50% {
+      background: linear-gradient(
+        to bottom left,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.8)
+      );
+    }
+    100% {
+      background: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+      );
+    }
+  }
+  
+  /* Основной контент */
+  .catalog .content-area {
+    position: absolute;
+    top: 15%;
+    left: 6%;
+    z-index: 3;
+    max-width: 40%;
+    padding: 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    color: white;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    overflow-y: auto;
+    animation: catalog-fadeIn 1s ease-out forwards;
+  }
+  
+  /* Появление контента */
+  @keyframes catalog-fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .catalog .fade-switch.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Кнопка участия */
+  .catalog .join-button {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 26px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 255, 128, 0.2);
+    position: relative;
+  }
+  
+  .catalog .join-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 255, 128, 0.4);
+  }
+  
+  /* Картинки галереи */
+  .catalog .gallery-card {
+    min-width: 160px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    scroll-snap-align: start;
+    position: relative;
+  }
+  
+  .catalog .gallery-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 255, 128, 0.4);
+  }
+  
+  .catalog .gallery-card-img {
+    flex: 1;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  
+  .catalog .gallery-card:hover .gallery-card-img {
+    filter: brightness(1);
+    transform: scale(1.05);
+  }
+  
+  .catalog .gallery-card-title {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    color: white;
+    font-size: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .catalog .gallery-card:hover .gallery-card-title {
+    opacity: 1;
+  }
+  
+  .catalog .challenge-gallery {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    z-index: 4;
+    overflow-x: auto;
+    max-width: 90%;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+  }
+  
+  /* Прокрутка */
+  .catalog .challenge-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .catalog .challenge-gallery::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+  }
+  
+  .catalog .challenge-gallery::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  /* Модальное окно */
+.modal-catalog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Поверх всех элементов */
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  
+  .catalog-content {
+    background: #fff; /* Белый фон */
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Тень */
+    position: relative;
+    z-index: 1001;
+    overflow-y: auto;
+    max-height: 80vh; /* Ограничение по высоте */
+  }
+  
+  .catalog-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .catalog-close:hover {
+    color: #e74c3c; /* Красный цвет при наведении */
+  }
+  
+  .modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .comments-section {
+    margin-top: 24px;
+  }
+  
+  .comments-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+  }
+  
+  .comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .comment-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .add-comment textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    margin-bottom: 12px;
+  }
+  
+  .add-comment .btn {
+    background: #5cc666;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .add-comment .btn:hover {
+    background: #3d7742;
+  }
+
+  /* Стили для фильтрации */
+    .sort-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 300px;
+    margin-left: 600px;
+  }
+  
+  .sort-options label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .sort-options .filter-button {
+    background: linear-gradient(135deg, #3d7742, #5cc666);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .sort-options .filter-button.active {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    box-shadow: 0 4px 12px rgba(0, 255, 128, 0.4);
+  }
+  
+  .sort-options .filter-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 128, 255, 0.4);
+  }
